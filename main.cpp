@@ -5,20 +5,29 @@
 #include "CycleCheck.h"
 using namespace std;
 int main(){
-    /*Graph<int> g1;
+    
+    //check cycle in graph using DFS
+    Graph<int> g1;
     g1.addEdge(1, 0);
     g1.addEdge(0, 2);
     g1.addEdge(2, 0);
     g1.addEdge(0, 3);
     g1.addEdge(3, 4);
-    if(cycleCheckDFS(&g1))cout<<"Cycle is present";
-    else cout<<"Cycle is not present";
-    */        
+    if(cycleCheckBFS(&g1))cout<<"Cycle is present"<<endl;
+    else cout<<"Cycle is not present"<<endl;
+    
     Graph<int> g2;
     g2.addEdge(0, 1);
     g2.addEdge(1, 2);
-    if(cycleCheckDFS(&g2))cout<<"Cycle is present";
-    else cout<<"Cycle is not present";
+    if(cycleCheckBFS(&g2))cout<<"Cycle is present"<<endl;
+    else cout<<"Cycle is not present"<<endl;
+ 
+    //check cycle in graph using DFS
+    if(cycleCheckDFS(&g1))cout<<"Cycle is present"<<endl;
+    else cout<<"Cycle is not present"<<endl;
+    
+    if(cycleCheckDFS(&g2))cout<<"Cycle is present"<<endl;
+    else cout<<"Cycle is not present"<<endl;
  
     /*
     Graph<int> g;
