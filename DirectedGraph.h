@@ -10,11 +10,11 @@ class DirectedGraph: public Graph<T>{
 };
 template<class T>
 void DirectedGraph<T>::addEdge(const T& data1, const T& data2){
-    if(!findVertex(data1))addVertex(data1);
-    if(!findVertex(data2))addVertex(data2);
-    GraphNode<T>* n1 = findVertex(data1);
-    GraphNode<T>* n2 = findVertex(data2);
-    n1->next = new AdjacentNode(n2, n1->next);
+    if(!this->findVertex(data1))this->addVertex(data1);
+    if(!this->findVertex(data2))this->addVertex(data2);
+    GraphNode<T>* n1 = this->findVertex(data1);
+    GraphNode<T>* n2 = this->findVertex(data2);
+    n1->next = new AdjacentNode<T>(n2, n1->next);
 }
 #endif /* DIRECTEDGRAPH_H */
 
