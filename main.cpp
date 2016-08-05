@@ -12,8 +12,8 @@ int main(){
     Graph<int> g;
     g.addEdge(0,1);
     g.addEdge(1,2);
-    g.addEdge(0,2);
-    if(isBipartiteDFS(&g))cout<<"Bipartite"<<endl;
+    //g.addEdge(0,2);
+    if(isBipartiteBFS(&g))cout<<"Bipartite"<<endl;
     else cout<<"Not bipartite"<<endl;
     
     /* Print reverse topological order
