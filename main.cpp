@@ -6,9 +6,17 @@
 #include "FindPath.h"
 #include "DirectedGraph.h"
 #include "TopologicalSort.h"
+#include "CheckBipartite.h"
 using namespace std;
 int main(){
+    Graph<int> g;
+    g.addEdge(0,1);
+    g.addEdge(1,2);
+    g.addEdge(0,2);
+    if(isBipartiteDFS(&g))cout<<"Bipartite"<<endl;
+    else cout<<"Not bipartite"<<endl;
     
+    /* Print reverse topological order
     DirectedGraph<int> g;
     g.addEdge(5, 2);
     g.addEdge(5, 0);
@@ -18,7 +26,7 @@ int main(){
     g.addEdge(3, 1);
     g.print();
     topologicalSort(&g);
-    
+    */
     /* Find path between two vertices
     Graph<int> g1;
     g1.addEdge(1, 0);
