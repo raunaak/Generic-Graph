@@ -7,14 +7,25 @@
 #include "DirectedGraph.h"
 #include "TopologicalSort.h"
 #include "CheckBipartite.h"
+#include "ShortestPath.h"
 using namespace std;
-int main(){
+int main(){    
+    Graph<int> g;
+    g.addEdge(1, 0);
+    g.addEdge(0, 2);
+    g.addEdge(2, 1);
+    g.addEdge(0, 3);
+    g.addEdge(3, 4);
+    shortestPath(&g, 1, 3);
+    /* Check if graph is bipartite
     Graph<int> g;
     g.addEdge(0,1);
     g.addEdge(1,2);
-    //g.addEdge(0,2);
+    g.addEdge(0,2);
     if(isBipartiteBFS(&g))cout<<"Bipartite"<<endl;
     else cout<<"Not bipartite"<<endl;
+    if(isBipartiteDFS(&g))cout<<"Bipartite"<<endl;
+    else cout<<"Not bipartite"<<endl;*/
     
     /* Print reverse topological order
     DirectedGraph<int> g;
