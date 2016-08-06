@@ -20,7 +20,7 @@ class Graph{
     GraphNode<T>* findVertex(const T& d);
     vector<GraphNode<T>*>& getList();
     vector<Edge<T>*>& getEdge();
-    vector<Edge<T>*>& sortEdgesByWeight();
+    void sortEdgesByWeight();
 };
 
 template<class T>
@@ -50,11 +50,6 @@ void Graph<T>::print(){
 }
 
 template<class T>
-void Graph<T>::addEdge(const T& data1, const T& data2){
-    this->addEdge(data1, data2, 0);
-}
-
-template<class T>
 void Graph<T>::addEdge(const T& data1, const T& data2, int w){
     /* Add graphnode to vector if there is no element corresponding to data1 and data2
        Find graphnodes in vector for elements corresponding to data1 and data2
@@ -66,8 +61,14 @@ void Graph<T>::addEdge(const T& data1, const T& data2, int w){
     GraphNode<T>* n2 = findVertex(data2);
     n1->next = new AdjacentNode<T>(n2,n1->next,w);
     n2->next = new AdjacentNode<T>(n1, n2->next,w);
-    this->edgeList.insert(new Edge(n1, n2, w));
+    this->edgeList.push_back(new Edge<T>(n1, n2, w));    
 }
+
+template<class T>
+void Graph<T>::addEdge(const T& data1, const T& data2){
+    this->addEdge(data1, data2, 0);
+}
+
 
 template<class T>
 vector<GraphNode<T>*>& Graph<T>::getList(){
