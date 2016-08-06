@@ -8,8 +8,19 @@
 #include "TopologicalSort.h"
 #include "CheckBipartite.h"
 #include "ShortestPath.h"
+#include "MinimumSpanningTree.h"
 using namespace std;
 int main(){    
+    
+    Graph<int> g;
+    g.addEdge(1, 0);
+    g.addEdge(0, 2);
+    g.addEdge(2, 1);
+    g.addEdge(0, 3);
+    g.addEdge(3, 4);
+    minimumSpanningTree(&g);
+    
+    /* Find shortest path between two vertices
     Graph<int> g;
     g.addEdge(1, 0);
     g.addEdge(0, 2);
@@ -17,6 +28,8 @@ int main(){
     g.addEdge(0, 3);
     g.addEdge(3, 4);
     shortestPath(&g, 1, 3);
+    */
+    
     /* Check if graph is bipartite
     Graph<int> g;
     g.addEdge(0,1);
