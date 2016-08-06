@@ -2,24 +2,26 @@
 #define GRAPH_H
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "GraphNode.h"
 #include "AdjacentNode.h"
+#include "Edge.h"
 using namespace std;
+
 template<class T>
 class Graph{
     public:
     vector<GraphNode<T>*> nodeList;
+    vector<Edge<T>*> edgeList;
     void addEdge(const T& data1, const T& data2);
+    void addEdge(const T& data1, const T& data2, int w);
     void addVertex(const T& d);
     void print();
     GraphNode<T>* findVertex(const T& d);
     vector<GraphNode<T>*>& getList();
+    vector<Edge<T>*>& getEdge();
+    vector<Edge<T>*>& sortEdgesByWeight();
 };
-
-template<class T>
-vector<GraphNode<T>*>& Graph<T>::getList(){
-    return this->nodeList;
-}
 
 template<class T>
 GraphNode<T>* Graph<T>::findVertex(const T& d){
@@ -49,6 +51,11 @@ void Graph<T>::print(){
 
 template<class T>
 void Graph<T>::addEdge(const T& data1, const T& data2){
+    this->addEdge(data1, data2, 0);
+}
+
+template<class T>
+void Graph<T>::addEdge(const T& data1, const T& data2, int w){
     /* Add graphnode to vector if there is no element corresponding to data1 and data2
        Find graphnodes in vector for elements corresponding to data1 and data2
        Add adjacentnode to both of the elements of vector
@@ -57,9 +64,24 @@ void Graph<T>::addEdge(const T& data1, const T& data2){
     if(!findVertex(data2))nodeList.push_back(new GraphNode<T>(data2,NULL));
     GraphNode<T>* n1 = findVertex(data1);
     GraphNode<T>* n2 = findVertex(data2);
-    n1->next = new AdjacentNode<T>(n2,n1->next);
-    n2->next = new AdjacentNode<T>(n1, n2->next);
-    
+    n1->next = new AdjacentNode<T>(n2,n1->next,w);
+    n2->next = new AdjacentNode<T>(n1, n2->next,w);
+    this->edgeList.insert(new Edge(n1, n2, w));
+}
+
+template<class T>
+vector<GraphNode<T>*>& Graph<T>::getList(){
+    return this->nodeList;
+}
+
+template<class T>
+vector<Edge<T>*>& Graph<T>::getEdge(){
+    return this->edgeList;
+}
+
+template<class T>
+void Graph<T>::sortEdgesByWeight(){
+    sort(edgeList.begin(), edgeList.end());
 }
 
 #endif /* GRAPH_H */
