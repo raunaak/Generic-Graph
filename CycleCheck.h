@@ -23,7 +23,7 @@ bool cycleCheckDFS(Graph<T>* g){
      * Visit node in dfs fashion but also add a parent argument
      * if adjacent node has already been visited and it is neither the parent of current node, boom we have found the cycle     
      */ 
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     set<GraphNode<T>*> gset; 
     for(int i=0; i<list.size(); i++){
         if(gset.find(list[i])==gset.end()){
@@ -42,7 +42,7 @@ bool cycleCheckBFS(Graph<T>* g){
      * Maintain two queues, one for current node and one for parent node
      * If any of the current node's children have already been visited and not equal to parent, yeah there is a cycle
      */
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     queue<GraphNode<T>*> q, p; //q queue for current node, p queue for parent node
     set<GraphNode<T>*> gset;
     for(int i=0; i<list.size(); i++){

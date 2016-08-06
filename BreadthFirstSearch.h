@@ -36,10 +36,9 @@ void breadthFirstSearch(Graph<T>* g){
      *         if yes, continue
      *         if no, run breadth first search on this part
      */
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     queue<GraphNode<T>*> q;  
     set<GraphNode<T>*> gset; 
-    cout<<list.size()<<endl;
     for(int i=0; i<list.size(); i++){
         if(gset.find(list[i])==gset.end()){
             q.push(list[i]);
@@ -48,4 +47,14 @@ void breadthFirstSearch(Graph<T>* g){
         }
     }    
 }
+
+template<typename T>
+void breadthFirstSearch(Graph<T>* g, GraphNode<T>* node){
+    queue<GraphNode<T>*> q;  
+    set<GraphNode<T>*> gset; 
+    q.push(node);
+    gset.insert(node);
+    breadthFirstSearch(g, &q, &gset);        
+}
+
 #endif /* BREADTHFIRSTSEARCH_H */

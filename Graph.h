@@ -7,17 +7,23 @@
 using namespace std;
 template<class T>
 class Graph{
-    vector<GraphNode<T>*> nodeList;
     public:
+    vector<GraphNode<T>*> nodeList;
     void addEdge(const T& data1, const T& data2);
     void addVertex(const T& d);
     void print();
     GraphNode<T>* findVertex(const T& d);
+    vector<GraphNode<T>*>& getList();
 };
 
 template<class T>
+vector<GraphNode<T>*>& Graph<T>::getList(){
+    return this->nodeList;
+}
+
+template<class T>
 GraphNode<T>* Graph<T>::findVertex(const T& d){
-    /* Find the vertex in vector with given data if found or returns NULL*/
+    /*Find the vertex in vector with given data if found or returns NULL*/
     for(int i=0; i<nodeList.size(); i++){
         if(nodeList[i]->data==d)return nodeList[i];
     }

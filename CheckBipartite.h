@@ -22,7 +22,7 @@ bool isBipartiteDFS(Graph<T>* g, GraphNode<T>* node, set<GraphNode<T>*>* gset1, 
 
 template<typename T>
 bool isBipartiteDFS(Graph<T>* g){
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     set<GraphNode<T>*> gset1;
     set<GraphNode<T>*> gset2;
     for(int i=0; i<list.size(); i++){
@@ -36,7 +36,7 @@ bool isBipartiteDFS(Graph<T>* g){
 
 template<typename T>
 bool isBipartiteBFS(Graph<T>* g){
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     set<GraphNode<T>*> gset1;
     set<GraphNode<T>*> gset2;
     queue<GraphNode<T>*> q;

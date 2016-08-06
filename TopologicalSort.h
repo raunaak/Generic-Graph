@@ -20,7 +20,7 @@ void topologicalSort(DirectedGraph<T>* g, GraphNode<T>* node, set<GraphNode<T>*>
 
 template<typename T>
 void topologicalSort(DirectedGraph<T>* g){
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     set<GraphNode<T>*> gset;
     for(int i=0; i<list.size(); i++){
         if(gset.find(list[i])==gset.end()){

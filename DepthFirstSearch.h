@@ -15,12 +15,19 @@ void depthFirstSearch(Graph<T>* g, GraphNode<T>* node, set<GraphNode<T>*>* gset)
         }
     }
 }
+
 template<typename T>
 void depthFirstSearch(Graph<T>* g){
-    vector<GraphNode<T>*> list = g->nodeList;
+    vector<GraphNode<T>*> list = g->getList();
     set<GraphNode<T>*> gset;
     for(int i=0; i<list.size(); i++)
     depthFirstSearch(g, list[i], &gset);
+}
+
+template<typename T>
+void depthFirstSearch(Graph<T>* g, GraphNode<T>* node){
+    set<GraphNode<T>*> gset;
+    depthFirstSearch(g, node, &gset);
 }
 #endif /* DEPTHFIRSTSEARCH_H */
 
