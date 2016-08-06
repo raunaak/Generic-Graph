@@ -1,6 +1,7 @@
 #ifndef CYCLECHECK_H
 #define CYCLECHECK_H
 #include "Graph.h"
+#include "DirectedGraph.h"
 using namespace std;
 
 template<typename T>
@@ -63,6 +64,32 @@ bool cycleCheckBFS(Graph<T>* g){
                     adjNode = adjNode->next; //traverse all the adjacent elements
                 }
             }
+        }
+    }
+    return false;
+}
+
+template<typename T>
+bool cycleCheck(DirectedGraph<T>* g, GraphNode<T>* node, set<GraphNode<T>*>* gset){
+    gset->insert(node);
+    AdjacentNode<T>* adjNode = node->next;
+    while(adjNode){
+        if(gset->find(adjNode->node)!=gset->end()||cycleCheck(g, adjNode->node, gset))return true;
+        adjNode = adjNode->next;
+    }
+    return false;
+}
+
+template<typename T>
+bool cycleCheck(DirectedGraph<T>* g){
+    /* Perform DFS traversal of directed graph
+     * If we reach a node twice it is cyclic
+     */
+    set<GraphNode<T>*> gset;
+    vector<GraphNode<T>*> list = g->getList();
+    for(int i=0; i<list.size(); i++){
+        if(gset.find(list[i])==gset.end()){
+            if(cycleCheck(g, list[i], &gset))return true;
         }
     }
     return false;

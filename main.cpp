@@ -11,14 +11,24 @@
 #include "MinimumSpanningTree.h"
 using namespace std;
 int main(){    
+    DirectedGraph<int> g;
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+    if(cycleCheck(&g))cout<<"cyclic graph"<<endl;
+    else cout<<"acyclic graph"<<endl;
     
+    /*Create minimum spanning tree of unweighted graph
     Graph<int> g;
     g.addEdge(1, 0);
     g.addEdge(0, 2);
     g.addEdge(2, 1);
     g.addEdge(0, 3);
     g.addEdge(3, 4);
-    minimumSpanningTree(&g);
+    minimumSpanningTree(&g);*/
     
     /* Find shortest path between two vertices
     Graph<int> g;
